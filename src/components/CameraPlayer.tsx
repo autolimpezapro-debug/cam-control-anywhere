@@ -32,7 +32,7 @@ export function CameraPlayer({ config }: { config: CameraConfig }) {
       pc.addTransceiver("video", { direction: "recvonly" });
       pc.addTransceiver("audio", { direction: "recvonly" });
       pc.ontrack = (event) => {
-        video.srcObject = event.streams[0];
+        video.srcObject = event.streams[0] ?? null;
         void video.play().catch(() => {});
         setStatus("live");
       };
